@@ -1,0 +1,62 @@
+services:
+  rabbitmq1:
+    image: rabbitmq:3.10-management
+    container_name: rabbitmq1
+    #    deploy:
+    #      mode: replicated
+    #      replicas: 3
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - ./dados:/var/lib/rabbitmq/
+    environment:
+      - RABBITMQ_DEFAULT_USER=paulo
+      - RABBITMQ_DEFAULT_PASS=psfood
+      - RABBITMQ_ERLANG_COOKIE='psfood'
+    networks:
+      - psfood
+
+  rabbitmq2:
+    image: rabbitmq:3.10-management
+    container_name: rabbitmq2
+    #    deploy:
+    #      mode: replicated
+    #      replicas: 3
+    restart: always
+    ports:
+      - "5673:5672"
+      - "15673:15672"
+    volumes:
+      - ./dados:/var/lib/rabbitmq/
+    environment:
+      - RABBITMQ_DEFAULT_USER=paulo
+      - RABBITMQ_DEFAULT_PASS=psfood
+      - RABBITMQ_ERLANG_COOKIE='psfood'
+    networks:
+      - psfood
+
+  rabbitmq3:
+    image: rabbitmq:3.10-management
+    container_name: rabbitmq3
+    #    deploy:
+    #      mode: replicated
+    #      replicas: 3
+    restart: always
+    ports:
+      - "5674:5672"
+      - "15674:15672"
+    volumes:
+      - ./dados:/var/lib/rabbitmq/
+    environment:
+      - RABBITMQ_DEFAULT_USER=paulo
+      - RABBITMQ_DEFAULT_PASS=psfood
+      - RABBITMQ_ERLANG_COOKIE='psfood'
+    networks:
+      - psfood
+
+
+networks:
+  psfood:
+    driver: bridge
